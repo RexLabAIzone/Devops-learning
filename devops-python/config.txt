@@ -1,0 +1,2 @@
+url=http://localhost
+disk_threshold=80
