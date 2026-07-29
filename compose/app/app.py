@@ -1,6 +1,10 @@
-from compose.app.app import app
+from flask import Flask
+app = Flask(__name__)
 
-def test_index():
-	client = app.test_client()
-	response = client.get('/')
-	assert response.status_code == 200
+
+@app.route('/')
+def hello():
+    return "Hello Devops World"
+
+
+app.run(host='0.0.0.0', port=5000)
