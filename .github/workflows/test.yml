@@ -22,4 +22,4 @@ jobs:
           pip install flask pymysql pytest
 
       - name: Run tests
-        run: pytest -v
+        run: pytest tests -v
