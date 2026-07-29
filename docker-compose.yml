@@ -4,11 +4,10 @@ version: "1.0.1"
 
 services:
   app:
-    build: ./app
+    build:
+      context: ./app
     container_name: flask-app
     restart: always
-    volumes:
-      - ./app:/app
     expose:
       - "8000"
 
