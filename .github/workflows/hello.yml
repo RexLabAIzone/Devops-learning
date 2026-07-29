@@ -2,7 +2,7 @@ name: Hello CI
 
 on:
   push:
-    branches:[ master ]
+    branches: [ master ]
 
 jobs:
   hello:
