@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-     - uses: actions/checkout@v5
+    - uses: actions/checkout@v5
 
-     - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
        with:
           python-version: '3.11'
           cache: 'pip'
-     - run: |
+    - run: |
         pip install flake8
         flake8 compose/app --max-line-length=100
