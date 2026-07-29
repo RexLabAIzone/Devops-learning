@@ -20,6 +20,5 @@ if __name__ == "__main__":
 
     app.run(
         host="0.0.0.0",
-        ports=80000,
-        debug=True
+        ports=8000
     )
