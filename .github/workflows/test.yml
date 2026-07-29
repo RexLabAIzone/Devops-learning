@@ -17,9 +17,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies.
+      - name: Install dependencies
         run: |
-          pip install flask pymysql pytest
+          pip install -r requirements-dev.txt
 
       - name: Run tests
         run: pytest tests -v
