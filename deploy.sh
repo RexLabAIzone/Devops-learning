@@ -6,10 +6,10 @@ echo "=====pull code===="
 git pull
 
 echo "=====build image=="
-docker compose build
+docker compose -f docker-compose.prod.yml build
 
 echo "=====restart servie==="
-docker compose up -d
+docker compose -f docker-compose.prod.yml up -d
 
 echo "======status====="
-docker compose ps
+docker compose -f docker-compose.prod.yml ps
