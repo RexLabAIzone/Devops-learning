@@ -1,11 +1,11 @@
+import os
 import paramiko
 
-from datetime import datetime
-
-key = paramiko.Ed25519Key.from_private_key_file("/root/.ssh/id_ed25519")
-server = [
-	{"host": "192.0.2.10", "user": "ksadmin"},
-	{"host": "192.0.2.11", "user": "ksadmin"},
+KEY_FILE = os.environ.get("LAB_SSH_KEY", "/root/.ssh/id_ed25519")
+key = paramiko.Ed25519Key.from_private_key_file(KEY_FILE)
+SERVERS = [
+	{"host": os.environ["LAB_HOST_1"], "user": os.environ.get("LAB_USER", "ksadmin")},
+	{"host": os.environ["LAB_HOST_2"], "user": os.environ.get("LAB_USER", "ksadmin")},
 ]
 
 
@@ -20,7 +20,7 @@ def run_command(server, command):
 	ssh.close()
 	return result
 print("=======xunjian=========")
-for servers in server:
+for servers in SERVERS:
 	hostname = run_command(servers, "hostname")
 	uptime = run_command(servers, "uptime -p")
 	cpu = run_command(servers, "top -bn1 |grep Cpu | awk '{print $2}'")

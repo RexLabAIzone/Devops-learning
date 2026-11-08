@@ -4,10 +4,10 @@ services:
     container_name: compose-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: REDACTED
-      MYSQL_DATABASE: devops
-      MYSQL_USER: devops
-      MYSQL_PASSWORD: REDACTED
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-devops}
+      MYSQL_USER: ${MYSQL_USER:-devops}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
@@ -19,9 +19,9 @@ services:
     restart: always
     environment:
       DB_HOST: db
-      DB_USER: devops
-      DB_PASSWORD: REDACTED
-      DB_NAME: devops
+      DB_USER: ${MYSQL_USER:-devops}
+      DB_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}
+      DB_NAME: ${MYSQL_DATABASE:-devops}
     volumes:
       - ./app:/app
     depends_on:

@@ -1,8 +1,9 @@
+import os
 import paramiko
 
-host = "192.0.2.10"
-user = "ksadmin"
-password = "REDACTED"
+host = os.environ["LAB_HOST"]
+user = os.environ.get("LAB_USER", "ksadmin")
+password = os.environ["LAB_SSH_PASSWORD"]
 commands = [
 	"hostname",
 	"uptime -p",

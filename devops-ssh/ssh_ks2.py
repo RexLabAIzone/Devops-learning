@@ -1,3 +1,4 @@
+import os
 import paramiko
 
 def run_command(host, user, password, command):
@@ -10,4 +11,9 @@ def run_command(host, user, password, command):
 
 	ssh.close()
 	return result
-print(run_command("192.0.2.11", "ksadmin", "REDACTED", "uptime -p"))
+print(run_command(
+	os.environ["LAB_HOST_1"],
+	os.environ.get("LAB_USER", "ksadmin"),
+	os.environ["LAB_SSH_PASSWORD"],
+	"uptime -p",
+))

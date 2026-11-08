@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 DB_HOST = os.getenv('DB_HOST', 'db')
 DB_USER = os.getenv('DB_USER', 'devops')
-DB_PASSWORD = os.getenv('DB_PASSWORD', 'REDACTED')
+DB_PASSWORD = os.environ['DB_PASSWORD']
 DB_NAME = os.getenv('DB_NAME', 'devops')
 
 @app.route('/')
